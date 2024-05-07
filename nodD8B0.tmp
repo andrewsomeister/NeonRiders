@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://cay4brftcbq2d"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="2_ehy27"]
+[ext_resource type="Texture2D" uid="uid://70kcqammrbwt" path="res://output-onlinepngtools.png" id="3_o71rp"]
+[ext_resource type="Script" path="res://StaticBody2D.gd" id="3_wbkkg"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xjtfc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4lop1"]
+radius = 185.714
+height = 740.426
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(789, 624)
+
+[node name="Line2D" type="Line2D" parent="."]
+material = SubResource("CanvasItemMaterial_xjtfc")
+points = PackedVector2Array(-1000, 0, 1000, 0)
+width = 3.0
+default_color = Color(0.340479, 0.604959, 0.99047, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Line2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Line2D/StaticBody2D"]
+polygon = PackedVector2Array(-1000, 0, 0, 0, 1000, 0)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-733, -17)
+scale = Vector2(0.1, 0.07)
+script = ExtResource("2_ehy27")
+
+[node name="BikeSprite" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(1, 1)
+texture = ExtResource("3_o71rp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1.14441e-05, 42.8571)
+rotation = -1.56294
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_4lop1")
+
+[node name="RearRayCast2D" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(-240, 200)
+exclude_parent = false
+collision_mask = 2
+
+[node name="FrontRayCast2D" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(250, 200)
+scale = Vector2(1, 1)
+exclude_parent = false
+collision_mask = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_wbkkg")
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D"]
+position = Vector2(8, 3)
+points = PackedVector2Array(-600, -3, -572, -11, -542, -28, -512, -48, -488, -72, -470, -107)
+width = 3.0
+default_color = Color(0.524154, 1, 0.610259, 1)

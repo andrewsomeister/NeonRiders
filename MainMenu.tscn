@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsw8yjwb7g6vl"]
+
+[ext_resource type="Texture2D" uid="uid://bt10ctmhduwht" path="res://Main Menu.png" id="1_ydwmc"]
+[ext_resource type="Script" path="res://PlayButton.gd" id="2_5n25f"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="Sprite2D" parent="."]
+position = Vector2(563, 280)
+scale = Vector2(1.12154, 1.1369)
+texture = ExtResource("1_ydwmc")
+
+[node name="PlayButton" type="MenuButton" parent="MainMenu"]
+custom_minimum_size = Vector2(20, 0.1)
+offset_left = -109.67
+offset_top = 227.811
+offset_right = 136.33
+offset_bottom = 304.811
+theme_override_font_sizes/font_size = 50
+text = "Play"
+switch_on_hover = true
+script = ExtResource("2_5n25f")
